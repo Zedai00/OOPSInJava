@@ -1,0 +1,17 @@
+default:
+    just --list
+
+clean:
+    rm -rf compiled || true
+    rm zedarray.jar || true
+    rm -rf jre      || true
+
+compile: clean
+    javac -d compiled src/module-info.java src/zed/array/Display.java
+
+jar: compile
+    jar --create --file zedarray.jar -C compiled .
+
+jlink: jar
+    #jlink --module-path zedarray.jar --add-modules zed.array,java.se,jdk.compiler --output jre
+    jlink --module-path zedarray.jar --add-modules $(echo $(java --list-modules | sed 's/...$//') | tr " " ","),zed.array --output jre
