@@ -5,8 +5,11 @@ public class Main {
     int ans = 0;
     for (int i = 0; i < a.length; i++) {
       for (int j = i + 1; j < a.length; j++) {
-        if ((i + j) == t) {
-          ans++;
+        for (int k = j + 1; k < a.length; k++) {
+
+          if ((a[i] + a[j] + a[k]) == t) {
+            ans++;
+          }
         }
       }
     }
