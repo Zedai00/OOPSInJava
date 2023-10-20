@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import zed.array.Display;
 
 public class Main {
 
@@ -15,8 +14,9 @@ public class Main {
       for (int i = 0; i < col; i++) {
         a[i] = sc.nextInt();
       }
-      Display p = new Display();
-      p.print(a);
+      for (int i = 0; i < row; i++) {
+        System.out.print(a[i] + " ");
+      }
     } else {
       int[][] a = new int[row][];
       for (int i = 0; i < row; i++) {
@@ -28,8 +28,12 @@ public class Main {
           a[i][j] = sc.nextInt();
         }
       }
-      Display p = new Display();
-      p.print(a);
+      for (int i = 0; i < row; i++) {
+        for (int j = 0; j < a[i].length; j++) {
+          System.out.print(a[i][j] + " ");
+        }
+        System.out.println();
+      }
     }
     sc.close();
   }
